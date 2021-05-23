@@ -11,6 +11,7 @@ pipeline {
         }
         stage('Build Docker Image') {
             steps {
+                sh "docker kill $(docker ps -q)"
                 sh 'docker build -t ${USERNAME_PASSWORD_USR}/simple-flask-app:latest .'
             }
         }
